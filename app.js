@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     let usersPHP = [];
     let usersFirmafy = [];
-
+    
     // Obtener usuarios desde localhost
     async function getUsers() {
         let response = await fetch("http://localhost:4000/");
@@ -54,6 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const rows = await getCSV();
             usersFirmafy = obtenerEmails(rows); // Guardar los emails obtenidos
             compararUsuarios();
+            document.getElementById('downloadBtnTxT').style.display = 'block';
+            document.getElementById('downloadBtnCsv').style.display = 'block';
         } catch (error) {
             console.error(error);
         }
@@ -105,11 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
         table.appendChild(tbody);
         document.getElementById('tableContainer').innerHTML = '';
         document.getElementById('tableContainer').appendChild(table);
-
     }
 
     //crear un txt con la informacion de la tabla
-
     function downloadTxt() {
         let table = document.querySelector('table');
         let rows = table.querySelectorAll('tr');
@@ -127,14 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
         a.href = url;
         a.download = 'usuarios_comunes.txt';
         a.click();
+        URL.revokeObjectURL(url);
     }
 
-    //crar un boton para descargar el txt
-
-    document.getElementById('downloadBtnTxT').addEventListener('click', downloadTxt);
-
     //crear un csv con la informacion de la tabla
-
     function downloadCsv() {
         let table = document.querySelector('table');
         let rows = table.querySelectorAll('tr');
@@ -152,16 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
         a.href = url;
         a.download = 'usuarios_comunes.csv';
         a.click();
+        URL.revokeObjectURL(url);
     }
 
-    //crar un boton para descargar el csv
-
+    document.getElementById('downloadBtnTxT').addEventListener('click', downloadTxt);
     document.getElementById('downloadBtnCsv').addEventListener('click', downloadCsv);
-
-
-
-    
-    
     document.getElementById('csvForm').addEventListener('submit', printRows);
     getUsers();
 });
