@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let tdMarca = document.createElement('td');
             tdCorreo.textContent = usuariosComunes[i].correo;
             tdLink.textContent = usuariosComunes[i].link;
-            tdMarca.textContent = usuariosComunes[i].Marca;
+            tdMarca.textContent = usuariosComunes[i].urlRecibiDiploma;
             tr.appendChild(tdCorreo);
             tr.appendChild(tdLink);
             tr.appendChild(tdMarca);
