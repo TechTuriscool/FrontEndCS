@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir CSV</title>
+</head>
+<body>
+    <h1>Subir Archivo CSV</h1>
+    <form id="csvForm" enctype="multipart/form-data">
+        <label for="fileInput">Seleccione un archivo CSV:</label>
+        <input type="file" id="fileInput" name="fileInput" accept=".csv">
+        <button type="submit">Subir</button>
+        <div id="tableContainer"></div> 
+        <button id="downloadBtnTxT">Descargar TXT</button>
+        <button id="downloadBtnCsv">Descargar CSV</button>
+    </form>
+    <script src="app.js"></script>
+</html>
